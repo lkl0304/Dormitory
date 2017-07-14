@@ -1,0 +1,46 @@
+*{font-family: '¿¬Ìå';}
+.mytab{
+	border: 1px solid #D3D6D4;
+	border-radius: 5px;
+}
+.shuyet{
+	width: 90%;
+	margin: 0 auto;
+	height: 460px;
+	background: url('../../images/bg.jpg') no-repeat;
+	background-size: 100% 460px;
+}
+.mynav{
+	width: 98%;
+	margin: 0 auto;
+	height: 90px;
+	line-height: 90px;
+	background-color: #2D6BAD;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+}
+.myin{
+	border: 1px solid #ddd;
+	border-radius: 15px;
+	width: 120px;
+	height: 30px;
+}
+.mypanel{
+	border: 1px solid #D3D6D4;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+.footer{
+	position: relative;
+}
+.ufy{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.inp{
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	height: 30px;
+	width: 180px;
+}
