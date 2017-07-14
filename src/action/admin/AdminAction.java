@@ -102,7 +102,7 @@ public class AdminAction implements Action {
 		if(aBiz.login(username, password)) {
 			session.put("aName", username);
 			session.put("aPass", password);
-			
+//			rBiz.addRec("管理员登录", "");
 			if (mima != null && mima.length() > 3) {
 				cUtil.setCookie(response, AD_COOKIE, username + "," + password);
 			} else { // 清除cookie
