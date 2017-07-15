@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="action.admin" namespace="/" extends="struts-default">
+    	<action name="login" class="action.admin.AdminAction">
+    		<result>login.jsp</result>
+    	</action>
+    	<action name="admin" class="action.admin.AdminAction" method="admin">
+    		<result name="success">admin.jsp</result>
+    		<result name="error">login.jsp</result>
+    		<allowed-methods>admin</allowed-methods>
+    	</action>
+    	<action name="*ad" class="action.admin.AdminAction" method="{1}">
+    		<result name="success">admin.jsp</result>
+    		<result name="error">login.jsp</result>
+    		<result name="logout">login.jsp</result>
+    		<allowed-methods>admin, login, logout, change</allowed-methods>
+     	</action>
+    </package>
+    
+    <package name="action.student" extends="struts-default">
+    	<action name="addstu" class="action.student.StuAction">
+    		<result>addstu.jsp</result>
+    	</action>
+    	<action name="*sd" class="action.student.StuAction" method="{1}">
+    		<result>student.jsp</result>
+    		<result name="addstu">student.jsp</result>
+    		<result name="delstu">student.jsp</result>
+    		<result name="search">student.jsp</result>
+    		<result name="xginfo">xgstu.jsp</result>
+    		<result name="update">student.jsp</result> <!-- 未使用 -->
+    		<allowed-methods>addstu, delstu, search, getstus, update, yzstu</allowed-methods>
+    	</action>
+    </package>
+    
+    <package name="action.lou" extends="struts-default">
+    	<action name="*ld" class="action.lou.LouAction" method="{1}">
+    		<result>lou.jsp</result>
+    		<result name="addlou">lou.jsp</result>
+    		<result name="dellou">lou.jsp</result>
+    		<result name="search">lou.jsp</result>
+    		<result name="update">lou.jsp</result>
+    		<result name="xginfo">xglou.jsp</result>
+    		<allowed-methods>addlou, dellou, getlous, search, update, yzlou</allowed-methods>
+    	</action>
+    </package>
+    
+    <package name="action" extends="struts-default">
+    	<action name="*rd" class="action.RecAction" method="{1}">
+    		<result>record.jsp</result>
+    		<result name="delrec">record.jsp</result>
+    		<allowed-methods>delrec, getrecs, jlip</allowed-methods>
+    	</action>
+    </package>
+</struts>

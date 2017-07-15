@@ -2,23 +2,55 @@ package cn.lkangle.dao;
 
 import java.sql.*;
 
-import cn.lkangle.util.Constant;
+import javax.sql.DataSource;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class MySql {
+	private static DataSource ds  = null;
 	private Connection        con = null;
 	private PreparedStatement pre = null;
 	
-	public Connection getCon() {
-		try {
-			Class.forName(Constant.JDBC);
-			con = DriverManager.getConnection(Constant.MYSQL, Constant.USER, Constant.PASS);
-		} catch (Exception e) {
-			System.err.println("连接失败!");
-			System.err.println(Constant.MYSQL + "  " + Constant.USER + "  " + Constant.PASS);
-			e.printStackTrace();
-		}
-		return con;
+	// 建立连接池  c3p0
+	static {
+		ComboPooledDataSource cps = new ComboPooledDataSource("dorm");
+		ds = cps;
 	}
+	// 建立连接池 dbcp
+//	static {
+//		Properties pps = new Properties();
+//		InputStream in = new MySql().getClass().getClassLoader().getResourceAsStream("dbcp-config.properties");
+//		try {
+//			pps.load(in);
+//			MySql.ds = BasicDataSourceFactory.createDataSource(pps);
+//		} catch (Exception e) {
+//			System.err.println("配置文件加载失败！");
+//			e.printStackTrace();
+//		}
+//	}
+	public Connection getCon()
+	{
+		try {
+			return ds.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	// 普通连接 没有关闭
+//	public Connection getCon(){
+//		String url  = "jdbc:mysql://localhost:3306/dorm?characterEncoding=gbk";
+//		String user = "root";
+//		String pass = "root";
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//			return DriverManager.getConnection(url, user, pass);
+//		} catch (Exception e) {
+//			System.err.println("数据库连接失败！");
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 	
 	public int execSql(String sql, String[] arr) // 执行数据库 增 删 改操作
 	{

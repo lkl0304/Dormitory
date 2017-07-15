@@ -1,4 +1,2 @@
-/action/
 /cn/
-/config.ini
-/struts.xml
+/dbcp-config.properties
