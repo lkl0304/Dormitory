@@ -18,7 +18,8 @@ import cn.lkangle.biz.admin.AdminBiz;
 import cn.lkangle.biz.admin.impl.AdminBizImpl;
 import cn.lkangle.util.CookieUtil;
 
-public class AdminAction implements Action {
+public class AdminAction implements Action{
+	
 	private static String AD_COOKIE = "admin.cookie";
 	StuAction stuaction = new StuAction(); 
 	RecAction rAction   = new RecAction();
